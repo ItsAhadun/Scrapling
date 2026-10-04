@@ -1,7 +1,7 @@
 # Scrapling
 
 A workspace for using [Scrapling](https://github.com/D4Vinci/Scrapling) with Claude Code to
-research things to buy. Claude reads product pages, reviews and prices through Scrapling's
+research things to buy in Pakistan. Claude reads product pages, reviews and prices through Scrapling's
 MCP server.
 
 ## Setup (your own computer)
@@ -30,7 +30,7 @@ a broader level, or add the shopping sites you use under Allowed domains
 
 Just ask, for example:
 
-> Find me the best noise-cancelling headphones under $300 and compare prices at Amazon,
-> Best Buy and Walmart.
+> Find me the best noise-cancelling headphones under Rs 30,000 and compare prices on Daraz,
+> PriceOye and Telemart.
 
-See `CLAUDE.md` for the research workflow Claude follows.
+See `CLAUDE.md` for the research workflow and buying preferences Claude follows.
