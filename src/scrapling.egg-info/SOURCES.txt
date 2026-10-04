@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+src/scrapling/__init__.py
+src/scrapling.egg-info/PKG-INFO
+src/scrapling.egg-info/SOURCES.txt
+src/scrapling.egg-info/dependency_links.txt
+src/scrapling.egg-info/top_level.txt

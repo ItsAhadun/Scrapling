@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: scrapling
+Version: 0.1.0
+Summary: Scrapling package
+Author: ItsAhadun
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+
+# Scrapling
+
+Install locally:
+
+```bash
+pip install -e .
+```
