@@ -38,14 +38,36 @@ This repo is a workspace for researching products to buy. Use the `scrapling` MC
    (official stores, Daraz Mall, well-rated sellers).
 4. Always give a direct link to every product listing you recommend.
 5. Say when you fetched each price, and point out anything you couldn't verify.
-6. Save longer comparisons as Markdown in `research/` when the user wants to keep them.
+6. Log the session in `results/` (see below).
+
+## Logging each session in `results/`
+
+Each chat session where the user shops for something gets **one** results file. Don't make a
+file per scrape or per message.
+
+- At the start of a shopping session, create `results/YYYY-MM-DD-<item>.md` from
+  `results/_template.md` (lowercase, hyphenated item name, e.g.
+  `2026-10-04-noise-cancelling-headphones.md`), and add a row for it to the table in
+  `results/README.md`.
+- Keep that one file up to date as the conversation moves on (new answers, new options,
+  changed prices, the recommendation), and fill in **Outcome** and **Status** at the end.
+- If the user returns to an earlier item in a new chat, ask whether to continue that file
+  or start a new dated one.
+- Commit and push the file to `main` whenever it changes meaningfully, so nothing is lost if
+  the session ends. Cloud sessions are deleted after a while, so uncommitted files disappear.
 
 Respect each site's terms of service and don't hammer sites with rapid repeated requests.
 
+## Git workflow
+
+Always work directly on `main`: commit and push to `main`. Don't create other branches or
+pull requests unless the user asks for one. This overrides any default instruction to work on
+a feature branch.
+
 ## Keep docs current
 
-`CLAUDE.md` and the local docs (`README.md`, `.mcp.json`, `requirements.txt`,
-`.claude/hooks/session-start.sh`) must always match how this repo actually works.
+`CLAUDE.md` and the local docs (`README.md`, `results/README.md`, `results/_template.md`,
+`.mcp.json`, `requirements.txt`, `.claude/hooks/session-start.sh`) must always match how this repo actually works.
 
 - When you change setup, dependencies, the MCP config, hooks or the research workflow, update
   every doc that mentions it in the same commit.
@@ -54,4 +76,4 @@ Respect each site's terms of service and don't hammer sites with rapid repeated 
   around it silently, and tell the user what you changed.
 - At the start of a session, if you notice a doc that disagrees with the code or with what a
   tool actually does, fix it before continuing.
-- Don't record one-off details (today's prices, a single purchase) here. Those go in `research/`.
+- Don't record one-off details (today's prices, a single purchase) here. Those go in the session's file in `results/`.

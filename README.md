@@ -33,4 +33,7 @@ Just ask, for example:
 > Find me the best noise-cancelling headphones under Rs 30,000 and compare prices on Daraz,
 > PriceOye and Telemart.
 
-See `CLAUDE.md` for the research workflow and buying preferences Claude follows.
+Each shopping chat gets one summary file in `results/` (what you wanted, options compared
+with prices and links, the recommendation and what you decided). See `results/README.md` for
+the list of past sessions and `CLAUDE.md` for the workflow and buying preferences Claude
+follows.
