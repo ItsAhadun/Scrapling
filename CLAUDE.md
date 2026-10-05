@@ -29,6 +29,18 @@ This repo is a workspace for researching products to buy. Use the `scrapling` MC
 - Pass a CSS selector to pull out only the parts you need (title, price, rating, specs) so
   responses stay small.
 
+### Site access from cloud sessions (last checked 2026-10-05)
+
+Cloud sessions run from data-centre IPs, which some stores block. Update this list when a
+site's behaviour changes.
+
+- Work: PriceOye (`make_request` with `.productBox` gives name, price and rating), Mega.pk,
+  Shophive, GSMArena, RTINGS, Reddit.
+- Blocked: Daraz search (connection reset / 502, even with the browser), Telemart (connection
+  errors), iShopping and Czone (Cloudflare challenge that can't be solved here).
+- For blocked sites, say so and use the working stores instead. Running Claude Code on the
+  user's own computer (home internet) usually gets through.
+
 ## How to research a purchase
 
 1. Ask your questions first (see rule 4 above) and wait for the answers.

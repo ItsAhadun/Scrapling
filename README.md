@@ -21,10 +21,11 @@ the `scrapling` command is on your PATH.
 
 ## Cloud sessions (claude.ai/code)
 
-`.claude/hooks/session-start.sh` installs Scrapling automatically. Cloud environments only
-reach the hosts their network policy allows, so set the environment's **Network access** to
-a broader level, or add the shopping sites you use under Allowed domains
-([docs](https://code.claude.com/docs/en/cloud-environments#network-access)).
+`.claude/hooks/session-start.sh` installs Scrapling and its browsers automatically. Set the
+environment's **Network access** to **Full** so it can reach shopping sites
+([docs](https://code.claude.com/docs/en/cloud-environments#network-access)). Some stores
+(Daraz, Telemart, iShopping, Czone) block cloud IPs; see `CLAUDE.md` for the current list.
+They usually work when you run Claude Code on your own computer.
 
 ## Usage
 

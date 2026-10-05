@@ -12,4 +12,6 @@ if ! command -v scrapling >/dev/null 2>&1; then
     pip install -q uv
   fi
   uv tool install -q --with-requirements "$CLAUDE_PROJECT_DIR/requirements.txt" scrapling
+  # Browsers for stealthy_fetch/fetch. Needs the environment's network access set to Full.
+  scrapling install >/dev/null 2>&1 || echo "scrapling install failed; browser tools won't work" >&2
 fi
