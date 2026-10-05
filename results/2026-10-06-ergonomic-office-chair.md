@@ -29,9 +29,46 @@ Prices in PKR, fetched with Scrapling on 2026-10-06.
 | Lecto / Xross | Meeshan Home | 24,500 / 27,500 | — | Lecto: plastic loop arms. Xross: no headrest. Ruled out | https://meeshan.com/products/lecto-office-chair-head-rest |
 | M20HR-FM / OF1025-FM | Offisits | 42,900 / 41,900 | Adjustable lumbar / 6D arms | Slightly over budget | https://offisits.com.pk/mesh-chairs/ |
 
+## Wide sweep (round 2)
+
+The user asked for hundreds of listings, so on 2026-10-06 I scanned **3,052 chair listings**. They came from 18 store
+catalogues (Shopify `products.json` / WooCommerce Store API) plus 15 Daraz searches of 3 pages each (694 unique listings):
+Lunar, Meeshan, Apna Furniture, Multiwood, Boost, Master Offisys, chair.com.pk, Renome, Offisits, officefurniture.com.pk,
+SitWise, OP Furniture, Bombay Furniture, Mega Computer, HomeAccessories, CareStore, Interwood and Habitt.
+
+- 725 were in the Rs 18–42k budget, in stock, and weren't overseas/import listings.
+- 154 mentioned both a headrest and lumbar support. 34 also mentioned adjustable lumbar, adjustable arms and a mesh back.
+- I checked photos for ~50 finalists.
+- Ruled out: gaming/leather chairs, chairs with no headrest in the photo, and **F-7HR (arms listed as "3D PP", i.e. hard
+  plastic)**.
+
+### Finalists: listing says arms are padded, plus headrest, adjustable lumbar and mesh back
+
+| Product | Store | Price (PKR) | Key specs | Link |
+|---|---|---|---|---|
+| ARIS-HR | Offisits | 33,700 | 2D headrest, adjustable lumbar, 2D arms with "soft arm pads", 90–135° recline, foam seat | https://offisits.com.pk/product/high-end-ergonomic-chair-with-adjustable-lumbar-support-aris-hr/ |
+| Backcare-37A | Offisits | 35,500 | Headrest, flexible lumbar, 3D arms with "soft PU arm-pads", double-section back | https://offisits.com.pk/product/ergonomic-executive-chair-for-mid-back-support-backcare-37a/ |
+| OF-750 | Offisits | 37,500 | **Sliding seat (adjustable seat depth)**, 3D arms with soft PU pads, headrest, recline locks at 90°/115°/135° | https://offisits.com.pk/product/executive-office-chair-with-sliding-seat-and-3d-armrest-of-750/ |
+| A31 | Offisits | 39,900 | 2D lumbar, arms with soft PU pads, high-density foam | https://offisits.com.pk/product/ergonomic-manager-chair-a31/ |
+| M97-HR | Offisits | 32,000 | Soft PU padded arms (up/down), lumbar up/down, 90–135° recline; medium back + headrest | https://offisits.com.pk/product/office-manager-chair-with-adjustable-lumbar-support-and-adjustable-armrest-m97-hr/ |
+| Korean QE37 | Daraz, 360 Office Furniture | 32,500 | Soft padded adjustable arms, adjustable lumbar, 2-way headrest, die-cast base | https://www.daraz.pk/products/qe37blk-i610825344.html |
+| Willow | Apna Furniture | 30,500 | "Foam padded armrests" (adjustable), adjustable lumbar, recline lock; mesh seat | https://www.apnafurniture.pk/products/willow-mesh-back-office-chair |
+| Victoria | Apna Furniture | 25,500 | Adjustable arms with soft arm pads, headrest, lumbar (adjustability not stated), recline lock | https://www.apnafurniture.pk/products/victoria-office-chair |
+| FlexSpine Elite | HomeAccessories | 25,200 | "Sculpted armrests with soft padding", dynamic lumbar, 3D headrest, synchro-tilt, high-density foam seat | https://homeaccessories.com.pk/shop/office-chairs/office-chair/executive-chairs/flexspine-elite-chair/ |
+
+### Also strong (3D arms + adjustable lumbar; the listing doesn't mention arm padding)
+
+Offisits OF328 (33,900), S35 (34,900), NEXUS (32,900), M20HR-MB (26,900); chair.com.pk Elite Pro (34,000) and Orvix
+(36,500); Renome Urien (38,400); plus Lunar Optima (32,000), Lunar Pluto (25,900) and Daraz Globiz (25,000) from round 1.
+
 ## Recommendation
 
-Top pick: **Lunar Optima LR-900 (Rs 32,000)**. Value pick: **Lunar Pluto LR-827 (Rs 25,900)**. On Daraz, the **Globiz 3D-arm chair (Rs 25,000)** is the best choice. All three beat the Meeshan Heavy Duty chair because their lumbar and armrests adjust. Before ordering, confirm with the seller on WhatsApp that the lumbar is adjustable and that the armrest tops are padded.
+- Top pick: **Offisits ARIS-HR (Rs 33,700)**. It has every must-have, and the listing says so in writing: soft arm pads,
+  adjustable lumbar, adjustable headrest and recline.
+- If the budget stretches: **OF-750 (Rs 37,500)**. Its sliding seat sets seat depth for leg length.
+- Value pick: **HomeAccessories FlexSpine Elite (Rs 25,200)**.
+- Offisits is a seating specialist with dozens of ergonomic models in budget. Its listings give the most detailed specs
+  of any store.
 
 ## Outcome
 
@@ -39,5 +76,7 @@ Top pick: **Lunar Optima LR-900 (Rs 32,000)**. Value pick: **Lunar Pluto LR-827 
 
 - Armrest padding: no listing states it. Judged from photos only. The T-arms on mesh chairs usually have soft PU tops, not thick cushions.
 - Lunar Optima has no written spec sheet on its page.
+- Round 2: homefactree.com (SSL error), chairs.pk (DNS fails), fokusoffice, homecart, zahcomputers, xtra.pk, alfamall, dexx.pk and wellshop.pk had no readable product API, so their listings aren't in the 3,052.
+- Prices and stock were rechecked live on the finalist pages on 2026-10-06; all were InStock.
 - SitWise only listed chairs under Rs 18k. dexx.pk returned an empty page. The Wellshop Sihoo search returned nothing.
 - Sihoo listings on desertcart/shoppingbag are Amazon imports, so they're skipped.
