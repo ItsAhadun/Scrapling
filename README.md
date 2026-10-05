@@ -6,18 +6,46 @@ MCP server.
 
 ## Setup (your own computer)
 
+macOS/Linux:
+
 ```bash
 git clone https://github.com/ItsAhadun/Scrapling.git
 cd Scrapling
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 scrapling install        # downloads the browsers used by stealthy_fetch
-claude                   # start Claude Code in this folder
 ```
 
-Claude Code picks up the `scrapling` MCP server from `.mcp.json`. Run `/mcp` inside Claude
-Code to check that it's connected. Keep the virtualenv activated when you start `claude` so
-the `scrapling` command is on your PATH.
+Windows (PowerShell):
+
+```powershell
+git clone https://github.com/ItsAhadun/Scrapling.git
+cd Scrapling
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+scrapling install
+```
+
+If `pip install` fails with a connection error (e.g. `ConnectionResetError 10054`), retry with
+`pip install -r requirements.txt --retries 10 --timeout 60`.
+
+Then point Claude Code at the venv's `scrapling` with a local MCP override (run inside the repo
+folder; it only applies to this folder on your machine and doesn't change `.mcp.json`):
+
+```bash
+# macOS/Linux
+claude mcp add --scope local scrapling -- "$PWD/.venv/bin/scrapling" mcp
+```
+
+```powershell
+# Windows
+claude mcp add --scope local scrapling -- "$PWD\.venv\Scripts\scrapling.exe" mcp
+```
+
+Check it with `claude mcp get scrapling` (should say Connected), then start `claude` in this
+folder. Because the override uses the full path, the venv doesn't need to be active. Start
+`claude` from the repo folder itself, not a parent folder, or the local override won't load.
 
 ## Cloud sessions (claude.ai/code)
 

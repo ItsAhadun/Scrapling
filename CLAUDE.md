@@ -66,6 +66,22 @@ site's behaviour changes.
 - For blocked sites, say so and use the working stores instead. Running Claude Code on the
   user's own computer (home internet) usually gets through.
 
+### Site access from my computer (checked 2026-10-06)
+
+From the user's home connection (Windows, local MCP override, see `README.md`):
+
+- **Daraz search** works with `make_request`, but the HTML has no products (they're rendered by
+  JavaScript). Use the JSON version instead:
+  `https://www.daraz.pk/catalog/?ajax=true&page=<N>&q=<query>` returns `mods.listItems` (name,
+  price, location, sellerName, itemUrl). Drop `location == "Overseas"`. `stealthy_fetch` with
+  `css_selector="[data-qa-locator=product-item]"` also works and shows the location.
+- **iShopping, Czone, allmytech.pk:** plain `make_request` returns 200, no Cloudflare challenge.
+  `stealthy_fetch` with `solve_cloudflare=True` also works (logs "No Cloudflare challenge
+  found"), so it isn't needed here but does no harm.
+- **TeleX:** `telemart.pk` redirects to `www.telex.pk` and works with the default
+  `follow_redirects="safe"` (there's no 127.0.0.1 proxy locally, so `True` isn't needed).
+- **OLX:** `covers-cases_c1471/q-<words>` returns 200 with results.
+
 ## How to research a purchase
 
 1. Ask your questions first (see rule 4 above) and wait for the answers.
