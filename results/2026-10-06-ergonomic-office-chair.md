@@ -42,7 +42,7 @@ SitWise, OP Furniture, Bombay Furniture, Mega Computer, HomeAccessories, CareSto
 - Ruled out: gaming/leather chairs, chairs with no headrest in the photo, and **F-7HR (arms listed as "3D PP", i.e. hard
   plastic)**.
 
-### Finalists: listing says arms are padded, plus headrest, adjustable lumbar and mesh back
+### Finalists: the listing says the arms are padded (all have a headrest, lumbar support and a mesh back)
 
 | Product | Store | Price (PKR) | Key specs | Link |
 |---|---|---|---|---|
@@ -74,9 +74,9 @@ Offisits OF328 (33,900), S35 (34,900), NEXUS (32,900), M20HR-MB (26,900); chair.
 
 ## Couldn't verify
 
-- Armrest padding: no listing states it. Judged from photos only. The T-arms on mesh chairs usually have soft PU tops, not thick cushions.
+- Armrest padding: round 1's picks don't state it, so I judged them from photos. Round 2's finalists state it in the listing, but these are seller claims. "Soft PU pads" on mesh chairs are thin, not thick cushions.
 - Lunar Optima has no written spec sheet on its page.
 - Round 2: homefactree.com (SSL error), chairs.pk (DNS fails), fokusoffice, homecart, zahcomputers, xtra.pk, alfamall, dexx.pk and wellshop.pk had no readable product API, so their listings aren't in the 3,052.
-- Prices and stock were rechecked live on the finalist pages on 2026-10-06; all were InStock.
+- ARIS-HR, Backcare-37A, OF-750 and FlexSpine prices and stock were rechecked live on their product pages (all InStock). The other prices come from the store APIs, fetched the same day.
 - SitWise only listed chairs under Rs 18k. dexx.pk returned an empty page. The Wellshop Sihoo search returned nothing.
 - Sihoo listings on desertcart/shoppingbag are Amazon imports, so they're skipped.
