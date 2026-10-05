@@ -33,7 +33,7 @@ from overseas sellers, a plastic case with "metallic paint", or a camera lens pr
 ## Recommendation
 
 None yet: no local listing matches. Suggested next steps: search on a home connection (Daraz
-search, Telemart, iShopping), ask Instagram/Facebook case sellers, or check mobile-accessory
+search, iShopping), ask Instagram/Facebook case sellers, or check mobile-accessory
 markets (Hafeez Centre, Saddar, Blue Area).
 
 ## Outcome
@@ -42,6 +42,10 @@ markets (Hafeez Centre, Saddar, Blue Area).
 
 - Daraz search page (blocked from cloud); used Daraz tag pages instead, which only show 40
   items each.
-- Telemart, iShopping, Czone: blocked from cloud (see `CLAUDE.md`).
-- OLX accessory search returned 404; allmytech.pk returned 403.
+- iShopping, Czone, allmytech.pk: Cloudflare blocks cloud sessions (see `CLAUDE.md`).
+- Rechecked later the same day after fixing Scrapling's redirect setting: TeleX (formerly
+  Telemart, telex.pk) and OLX (phone cases category) both work, but neither has a metal
+  frameless case for the S22 Ultra. Telex only has Pitaka cases for newer phones; OLX S22
+  Ultra case listings are leather, silicone and clear cases. The earlier OLX 404 meant "no
+  results", not a block.
 - Instagram/Facebook sellers not searchable with Scrapling.

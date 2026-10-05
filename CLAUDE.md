@@ -9,7 +9,7 @@ This repo is a workspace for researching products to buy. Use the `scrapling` MC
    Pakistan, priced in PKR. Skip anything that has to be shipped from abroad (Amazon.com,
    AliExpress, eBay international, etc.), even if a Pakistani site lists it.
 2. **Online stores are fine.** Buying from Pakistani websites is the normal way to buy, e.g.
-   Daraz.pk, PriceOye.pk, Telemart.pk, Mega.pk, iShopping.pk, Shophive.com, Czone.com.pk (PC
+   Daraz.pk, PriceOye.pk, TeleX.pk (formerly Telemart), Mega.pk, iShopping.pk, Shophive.com, Czone.com.pk (PC
    parts) and brand stores that deliver in Pakistan.
 3. **Don't ask about warranty.** The user doesn't care about it, so leave it out of questions
    and don't use it to rank products.
@@ -34,13 +34,31 @@ This repo is a workspace for researching products to buy. Use the `scrapling` MC
 Cloud sessions run from data-centre IPs, which some stores block. Update this list when a
 site's behaviour changes.
 
+- **Redirects:** `make_request`'s default `follow_redirects="safe"` rejects every redirect in
+  cloud sessions, because traffic goes through a local proxy on 127.0.0.1 and Scrapling treats
+  that as an internal IP ("Redirect to internal IP 127.0.0.1 rejected"). Pass
+  `follow_redirects=True` (Python API: `Fetcher.get(url, follow_redirects=True)`).
 - Work: PriceOye (`make_request` with `.productBox` gives name, price and rating), Mega.pk,
   Shophive, GSMArena, RTINGS, Reddit.
+- TeleX (formerly Telemart): `telemart.pk` now redirects to `www.telex.pk`, so it needs
+  `follow_redirects=True`. It's a Shopify store: `https://www.telex.pk/search/suggest.json?q=<query>&resources[type]=product`
+  returns JSON.
+- OLX: `https://www.olx.com.pk/<category>_c<id>/q-<words-with-hyphens>` (phone cases are
+  `covers-cases_c1471`). A 404 means no results, not a block. Rate-limits (429) after a few
+  quick requests, so wait about 10 s between them.
 - Daraz tag pages work: `https://www.daraz.pk/tag/<words-with-hyphens>/?ajax=true` returns
   JSON (`mods.listItems` has name, price, rating, seller and `location`; `Overseas` means
   shipped from abroad). Retry on a 502. Up to 40 items per tag.
-- Blocked: Daraz search (connection reset / 502, even with the browser), Telemart (connection
-  errors), iShopping and Czone (Cloudflare challenge that can't be solved here).
+- Blocked, and can't be fixed from inside a cloud session:
+  - Daraz search (`/catalog/?q=`): Daraz's server closes the connection from cloud IPs right
+    after the request, even with the browser.
+  - Cloudflare-protected stores (iShopping, Czone, allmytech.pk, others showing "Just a
+    moment..."): Cloudflare rejects data-centre IPs, and the session's egress proxy
+    re-terminates TLS, which hides Scrapling's browser fingerprint. `stealthy_fetch` with
+    `solve_cloudflare=True` can't help: the Turnstile widget never loads
+    (`challenges.cloudflare.com` frame fails with `ERR_TOO_MANY_RETRIES`, and
+    `brunhild.challenges.cloudflare.com` is refused by the proxy), and Scrapling's solver then
+    waits forever, so the MCP call times out. Don't use `solve_cloudflare` in cloud sessions.
 - On a fresh cloud session the `scrapling` MCP server can fail to connect because it starts
   before the session hook finishes installing Scrapling. Run `/mcp` to reconnect, or use
   Scrapling's Python API directly (`~/.local/share/uv/tools/scrapling/bin/python`, `from

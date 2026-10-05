@@ -24,7 +24,7 @@ the `scrapling` command is on your PATH.
 `.claude/hooks/session-start.sh` installs Scrapling and its browsers automatically. Set the
 environment's **Network access** to **Full** so it can reach shopping sites
 ([docs](https://code.claude.com/docs/en/cloud-environments#network-access)). Some stores
-(Daraz, Telemart, iShopping, Czone) block cloud IPs; see `CLAUDE.md` for the current list.
+(Daraz search, iShopping, Czone and other Cloudflare-protected sites) block cloud IPs; see `CLAUDE.md` for the current list.
 They usually work when you run Claude Code on your own computer.
 
 ## Usage
@@ -32,7 +32,7 @@ They usually work when you run Claude Code on your own computer.
 Just ask, for example:
 
 > Find me the best noise-cancelling headphones under Rs 30,000 and compare prices on Daraz,
-> PriceOye and Telemart.
+> PriceOye and TeleX.
 
 Each shopping chat gets one summary file in `results/` (what you wanted, options compared
 with prices and links, the recommendation and what you decided). See `results/README.md` for
