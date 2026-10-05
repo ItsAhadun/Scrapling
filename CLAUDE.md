@@ -81,6 +81,15 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
 - **TeleX:** `telemart.pk` redirects to `www.telex.pk` and works with the default
   `follow_redirects="safe"` (there's no 127.0.0.1 proxy locally, so `True` isn't needed).
 - **OLX:** `covers-cases_c1471/q-<words>` returns 200 with results.
+- **Finding smaller stores:** plain `make_request` to Bing or DuckDuckGo returns junk or a
+  captcha. `stealthy_fetch` on `https://www.bing.com/search?q=<query>&cc=PK&setlang=en` works
+  (read `li.b_algo`: `h2` title, `cite` domain). Pakistani phone-case stores are mostly Shopify,
+  so `https://<store>/search/suggest.json?q=<query>&resources[type]=product&resources[limit]=10`
+  returns JSON (title, price, availability, url); WooCommerce stores use
+  `/?s=<query>&post_type=product`.
+- **Temu** (`temu.com/pk-en`, prices in PKR, but ships from China, so it's an import): blocked.
+  Search pages and `-s.html` listing pages have no products in the HTML, and `stealthy_fetch`
+  gets redirected to a login page or a "Security verification" captcha.
 
 ## How to research a purchase
 

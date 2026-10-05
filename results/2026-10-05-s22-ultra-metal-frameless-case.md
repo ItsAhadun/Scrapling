@@ -53,10 +53,42 @@ frameless case for the S22 Ultra from a Pakistan-based seller:
   return nothing; "s22-ultra-case" lists leather, silicone, clear, Spigen and flip covers, none
   metal.
 
+### Phone-case stores (2026-10-06)
+
+The user asked to widen the search to phone-case websites. Stores found through Bing
+(`stealthy_fetch`) and searched with Scrapling ("s22 ultra metal", "s22 ultra bumper",
+"s22 ultra aluminium", "metal bumper", "s22 ultra frame", "s22 ultra ring"). None has a metal
+frameless case for the S22 Ultra:
+
+| Store | What it has | Link |
+|---|---|---|
+| PhoneCase.pk | Dozens of S22 Ultra "Premium Metal Printed soft Bumper" cases, Rs 1,499 (printed soft case, not a metal frame); S22 Ultra leather MagSafe "frameless" case, Rs 2,699 (leather, not metal) | https://phonecase.pk/products/galaxy-s22-ultra-executive-aromatherapy-leather-magsafe-frameless-case |
+| Dynamite Accessories | **Real metal frame kit**, Rs 2,749 (was 5,499), but only for S24 Ultra / S25 Ultra (S26 Ultra Rs 2,999). Won't fit the S22 Ultra. Worth messaging them to ask about an S22 Ultra version | https://dynamiteaccessories.pk/product/metal-protective-samsung-s24-ultra-kit/ |
+| RS Store | Metal bumper case, Rs 3,880, iPhone only | https://rsstore.pk/products/metal-bumper-iphone-case |
+| PhoneCovers.pk | Z-shape metal bumper with 360° ring holder, Rs 6,999 (over budget), iPhone only | https://phonecovers.pk/products/untitled-may29_12-18 |
+| Diversity.pk | Metal-mesh and Pi-shape iPhone cases, sold out | https://diversity.pk/products/alpha-hybrid-metal-mesh-iphone-case-silver |
+| Castify.pk | Same printed "metal" soft bumpers as PhoneCase.pk, no S22 Ultra metal frame | https://castify.pk |
+| Clair.pk | "Metal" magnetic glass cases for iPhone/A-series, none for S22 Ultra | https://www.clair.pk |
+| OrderNation | S22 Ultra "Aluminum Furnish" soft case, Rs 639 (reflective TPU, not metal) | https://www.ordernation.com/products/samsung-galaxy-s22-ultra-5g-cover-purple-radiant-diamond-ray-reflective-aluminum-furnish-soft-borders-cases-on3614-s22ultra-purple |
+| Covers.pk, Skinlee, CoverWalay, Lavishly, Xcessories Hub | No metal S22 Ultra case | |
+
+Also checked: Daraz tags `samsung-metal-bumper-phone-cover`, `samsung-metal-case`, `s22-bumper`,
+`samsung-s22-ultra-bumper-case`, `s22-ultra-metal-case`, `samsung-s22-metal-case` (only the same
+near-misses as above, plus camera-lens rings and Spigen cases for S25/S26 Ultra).
+
+### Temu (2026-10-06)
+
+The user asked to check Temu. Temu has a Pakistan site (`temu.com/pk-en`, prices in PKR), but
+it ships from China, so it breaks the no-importing rule. Scrapling couldn't read it: listing
+pages have no products in the HTML, and the browser gets sent to a login page or a captcha.
+Searching it would need the user to browse Temu themselves.
+
 ## Recommendation
 
 No online listing in Pakistan matches, so there's nothing to buy online. To find one:
 
+- Message Dynamite Accessories (they sell a metal frame for the S24/S25 Ultra) and ask if
+  they can supply one for the S22 Ultra.
 - Ask Instagram/Facebook phone-case sellers (search "S22 Ultra metal bumper" / "aluminium
   bumper"); several Karachi/Lahore case shops sell through DMs only.
 - Visit a mobile-accessory market: Hafeez Centre (Lahore), Saddar / Star City Mall (Karachi),
@@ -67,7 +99,8 @@ No online listing in Pakistan matches, so there's nothing to buy online. To find
 
 ## Outcome
 
-No online purchase. Every Pakistani store Scrapling could reach was checked; nothing fits.
+No online purchase. Every Pakistani store Scrapling could reach was checked (marketplaces plus
+16 phone-case stores, 2026-10-06); nothing fits. Temu couldn't be checked (login/captcha).
 Next step is offline (markets) or Instagram/Facebook sellers.
 
 ## Couldn't verify
@@ -80,3 +113,5 @@ Next step is offline (markets) or Instagram/Facebook sellers.
   Ultra case listings are leather, silicone and clear cases. The earlier OLX 404 meant "no
   results", not a block.
 - Instagram/Facebook sellers not searchable with Scrapling.
+- Temu: blocked by login/captcha. ShopWithSami.pk: Cloudflare error. PouchStore.pk: site search
+  ignores the query.
