@@ -8,3 +8,4 @@ One file per shopping chat session, not one per scrape. Each file is named
 
 | Date | Item | Status | File |
 |---|---|---|---|
+| 2026-10-05 | Metal frameless case for Galaxy S22 Ultra | In progress | [2026-10-05-s22-ultra-metal-frameless-case.md](2026-10-05-s22-ultra-metal-frameless-case.md) |

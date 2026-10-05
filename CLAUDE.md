@@ -36,8 +36,15 @@ site's behaviour changes.
 
 - Work: PriceOye (`make_request` with `.productBox` gives name, price and rating), Mega.pk,
   Shophive, GSMArena, RTINGS, Reddit.
+- Daraz tag pages work: `https://www.daraz.pk/tag/<words-with-hyphens>/?ajax=true` returns
+  JSON (`mods.listItems` has name, price, rating, seller and `location`; `Overseas` means
+  shipped from abroad). Retry on a 502. Up to 40 items per tag.
 - Blocked: Daraz search (connection reset / 502, even with the browser), Telemart (connection
   errors), iShopping and Czone (Cloudflare challenge that can't be solved here).
+- On a fresh cloud session the `scrapling` MCP server can fail to connect because it starts
+  before the session hook finishes installing Scrapling. Run `/mcp` to reconnect, or use
+  Scrapling's Python API directly (`~/.local/share/uv/tools/scrapling/bin/python`, `from
+  scrapling.fetchers import Fetcher`).
 - For blocked sites, say so and use the working stores instead. Running Claude Code on the
   user's own computer (home internet) usually gets through.
 
