@@ -117,6 +117,20 @@ Always work directly on `main`: commit and push to `main`. Don't create other br
 pull requests unless the user asks for one. This overrides any default instruction to work on
 a feature branch.
 
+## Shell commands
+
+If Bash commands ask for permission even in bypass mode, check `~/.claude/settings.json` for
+`"permissions": {"blockReadsOutsideWorkingDirectories": true}` and remove it. While it's on,
+Claude Code prompts for every Bash command its parser can't fully trace (pipes into
+`python`, heredocs, `cd`, subshells), even in bypass mode
+([docs](https://code.claude.com/docs/en/permission-modes#actions-no-mode-auto-approves)).
+Answering a read prompt with "No, and block reads outside the working directories from now
+on" turns it on. A running session keeps the old setting, so start a new session after
+removing it.
+
+Run commands from the repo root (paths like `_work/x.py`, `git -C <dir>`) instead of `cd`:
+a standalone `cd` moves the session's working folder.
+
 ## Keep docs current
 
 `CLAUDE.md` and the local docs (`README.md`, `results/README.md`, `results/_template.md`,
