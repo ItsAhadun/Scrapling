@@ -76,7 +76,17 @@ Offisits OF328 (33,900), S35 (34,900), NEXUS (32,900), M20HR-MB (26,900); chair.
 
 - Armrest padding: round 1's picks don't state it, so I judged them from photos. Round 2's finalists state it in the listing, but these are seller claims. "Soft PU pads" on mesh chairs are thin, not thick cushions.
 - Lunar Optima has no written spec sheet on its page.
-- Round 2: homefactree.com (SSL error), chairs.pk (DNS fails), fokusoffice, homecart, zahcomputers, xtra.pk, alfamall, dexx.pk and wellshop.pk had no readable product API, so their listings aren't in the 3,052.
+- Round 2: 9 stores had no readable product API. I debugged them afterwards:
+  - chairs.pk: a domain I guessed, and it doesn't exist.
+  - homefactree.com: the site is down.
+  - alfamall: needs a login.
+  - wellshop.pk: an Amazon reseller, so it's an import.
+  - The other five can be read through their HTML. In-budget chairs found there:
+    - xtra.pk: Boost Surge Pro Rs 33,999 (4D arms, adjustable lumbar, footrest, high-back mesh) and Boost Ascend Rs 28,999 (adjustable lumbar, footrest).
+    - fokusoffice: Black Ergonomic Mesh Chair with Headrest Rs 24,000, unrated.
+    - dexx.pk: chairs are Rs 85k+, over budget.
+    - homecart and zahcomputers: no ergonomic chairs.
+  - None of these beat the finalists.
 - ARIS-HR, Backcare-37A, OF-750 and FlexSpine prices and stock were rechecked live on their product pages (all InStock). The other prices come from the store APIs, fetched the same day.
 - SitWise only listed chairs under Rs 18k. dexx.pk returned an empty page. The Wellshop Sihoo search returned nothing.
 - Sihoo listings on desertcart/shoppingbag are Amazon imports, so they're skipped.
