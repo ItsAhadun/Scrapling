@@ -69,27 +69,63 @@ def woo(store, kw):
         time.sleep(1)
     return rows
 
-def daraz(queries, pages=3):
+def daraz_search(q, page, flt):
+    """One Daraz search page as JSON. Retries once on 502/odd responses. Returns (items, total_results)."""
+    for attempt in range(3):
+        try:
+            d = json.loads(body(get("https://www.daraz.pk/catalog/", params={"ajax": "true", "page": page, "q": q, **flt})))
+            return d["mods"]["listItems"], int(d["mainInfo"]["totalResults"])
+        except Exception:
+            time.sleep(3)
+    return [], 0
+
+def daraz(queries, pages=3, min_price=None, max_price=None, sort=None, min_rating=None, mall=False, overseas=False):
+    """Daraz search via its JSON endpoint. Filters run on Daraz's server, so --pages goes to real matches.
+    Only Pakistan-based sellers (location=Local) unless overseas=True. sort: priceasc | pricedesc | popularity."""
+    flt = {}
+    if min_price is not None or max_price is not None:
+        flt["price"] = f"{min_price or 0}-{max_price or 9999999}"
+    if sort:
+        flt["sort"] = sort
+    if min_rating:
+        flt["rating"] = min_rating
+    if mall:
+        flt["service"] = "reseller"
+    if not overseas:
+        flt["location"] = "Local"
     rows, seen = [], set()
     for q in queries:
         for page in range(1, pages + 1):
-            try:
-                items = json.loads(body(get("https://www.daraz.pk/catalog/",
-                                            params={"ajax": "true", "page": page, "q": q})))["mods"]["listItems"]
-            except Exception:
-                time.sleep(3)
-                continue
+            items, total = daraz_search(q, page, flt)
+            if not items:
+                break
             for it in items:
                 if it["itemId"] in seen:
                     continue
                 seen.add(it["itemId"])
                 u = it["itemUrl"]
                 rows.append(dict(src="daraz:" + it.get("sellerName", ""), title=it["name"], price=float(it.get("price", 0)),
-                                 avail=True, url=("https:" + u if u.startswith("//") else u).split("?")[0],
+                                 was=float(it["originalPrice"]) if it.get("originalPrice") else None,
+                                 avail=it.get("inStock", True), url=("https:" + u if u.startswith("//") else u).split("?")[0],
                                  loc=it.get("location"), rating=it.get("ratingScore"), reviews=it.get("review"),
-                                 img=it.get("image", "")))
+                                 sold=it.get("itemSoldCntShow"), brand=it.get("brandName"), item_id=it["itemId"],
+                                 desc=" | ".join(it.get("description") or [])[:1500], img=it.get("image", "")))
+            if page * 40 >= total:
+                break
             time.sleep(2)
     return rows
+
+def daraz_reviews(item_id, pages=1, size=20):
+    """Review texts for one Daraz product (item_id is the number in the listing JSON / the -i<number>.html in its URL)."""
+    out = []
+    for page in range(1, pages + 1):
+        m = json.loads(body(get("https://my.daraz.pk/pdp/review/getReviewList",
+                                params={"itemId": item_id, "pageSize": size, "filter": 0, "sort": 0, "pageNo": page})))["model"]
+        out += [dict(stars=r["rating"], date=r.get("reviewTime"), text=r.get("reviewContent")) for r in m["items"]]
+        if page >= m["paging"]["totalPages"]:
+            break
+        time.sleep(1)
+    return out
 
 def diagnose_html(final_url, server, page):
     """Explain why a 200-OK store has no Shopify/Woo API, and what to try instead."""
@@ -150,11 +186,22 @@ def main():
     ap.add_argument("--keyword", default="", help="regex for Shopify titles / search term for WooCommerce")
     ap.add_argument("--daraz", nargs="*", default=[], help="Daraz search queries")
     ap.add_argument("--pages", type=int, default=3, help="Daraz pages per query (40 items each)")
+    ap.add_argument("--min-price", type=int, help="Daraz: minimum price in PKR")
+    ap.add_argument("--max-price", type=int, help="Daraz: maximum price in PKR")
+    ap.add_argument("--sort", choices=["popularity", "priceasc", "pricedesc"], help="Daraz sort order")
+    ap.add_argument("--min-rating", type=int, choices=[1, 2, 3, 4], help="Daraz: minimum star rating")
+    ap.add_argument("--mall", action="store_true", help="Daraz: Mall (official brand stores) only")
+    ap.add_argument("--overseas", action="store_true", help="Daraz: also include sellers shipping from abroad (default: Pakistan only)")
+    ap.add_argument("--daraz-reviews", metavar="ITEM_ID", help="print reviews for one Daraz item id and exit")
     ap.add_argument("--out", default="_work/listings.json")
     ap.add_argument("--selftest", action="store_true")
     a = ap.parse_args()
     if a.selftest:
         return selftest()
+    if a.daraz_reviews:
+        for r in daraz_reviews(a.daraz_reviews, a.pages):
+            print(r["stars"], r["date"], r["text"], sep=" | ")
+        return
     rows = []
     for s in a.stores:
         got, kind = shopify(s, a.keyword), "shopify"
@@ -166,7 +213,7 @@ def main():
         print(f"{s}: {kind}, {len(got)} listings", flush=True)
         rows += got
     if a.daraz:
-        got = daraz(a.daraz, a.pages)
+        got = daraz(a.daraz, a.pages, a.min_price, a.max_price, a.sort, a.min_rating, a.mall, a.overseas)
         print(f"daraz: {len(got)} unique listings ({sum(r.get('loc') == 'Overseas' for r in got)} Overseas)", flush=True)
         rows += got
     import os

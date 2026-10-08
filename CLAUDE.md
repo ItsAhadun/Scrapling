@@ -73,8 +73,20 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
 - **Daraz search** works with `make_request`, but the HTML has no products (they're rendered by
   JavaScript). Use the JSON version instead:
   `https://www.daraz.pk/catalog/?ajax=true&page=<N>&q=<query>` returns `mods.listItems` (name,
-  price, location, sellerName, itemUrl). Drop `location == "Overseas"`. `stealthy_fetch` with
-  `css_selector="[data-qa-locator=product-item]"` also works and shows the location.
+  price, originalPrice, location, sellerName, brandName, ratingScore, review, itemSoldCntShow,
+  description (highlights list), itemId, itemUrl) and `mainInfo.totalResults` (40 items per page).
+  `stealthy_fetch` with `css_selector="[data-qa-locator=product-item]"` also works.
+  Daraz filters on its server (checked 2026-10-09), so add them to the URL instead of sweeping
+  thousands of listings and filtering locally: `price=10000-30000`, `sort=priceasc|pricedesc|popularity`,
+  `rating=4` (4 stars and up), `location=Local` (Pakistan-based sellers only; `Overseas` is the
+  imports, region names like `Punjab` also work), `service=reseller` (Mall / official stores),
+  `service=Free_Shipping`. The response's `mods.filter.filterItems` lists the category, brand and
+  product-attribute filters for that query (attribute ones go in `ppath=<value>`, e.g.
+  `ppath=40115:108866` = Ergonomic Chair). Queries for things Daraz doesn't sell (cars) return
+  accessories only; search the item itself, not the model it fits.
+  Reviews: `https://my.daraz.pk/pdp/review/getReviewList?itemId=<id>&pageSize=20&filter=0&sort=0&pageNo=<N>`
+  returns `model.items` (rating, reviewContent, reviewTime) and `model.paging.totalPages`. The product
+  page (`/products/-i<id>.html`) embeds `__moduleData__` JSON with the full description HTML.
 - **iShopping, Czone, allmytech.pk:** plain `make_request` returns 200, no Cloudflare challenge.
   `stealthy_fetch` with `solve_cloudflare=True` also works (logs "No Cloudflare challenge
   found"), so it isn't needed here but does no harm.
@@ -112,7 +124,7 @@ python tools/catalog.py --keyword chair --stores offisits.com.pk lunarfurniture.
 
 `_work/` is gitignored. In cloud sessions run it with
 `~/.local/share/uv/tools/scrapling/bin/python`. Filter the JSON afterwards with a short script
-(budget, `loc != "Overseas"`, keywords in `title`/`desc`). Use `python tools/catalog.py --selftest`
+(store-side budget, keywords in `title`/`desc`). Use `python tools/catalog.py --selftest`
 to check the diagnosis logic.
 
 For stores that aren't Shopify or WooCommerce, it prints a diagnosis and what to use instead.
