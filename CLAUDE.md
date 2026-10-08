@@ -88,7 +88,10 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
   returns JSON (title, price, availability, url); WooCommerce stores use
   `/?s=<query>&post_type=product`.
   Bing's `count=30` parameter returns an empty page, so page through results with `&first=11`
-  instead. Only use domains that show up in search results: guessing one from a seller name
+  instead. After about 4 quick searches Bing starts redirecting to `&rdr=1&rdrig=...` and returns
+  an empty page (checked 2026-10-08), so make every search count. When that happens,
+  `html.duckduckgo.com` returns 202 with no results and Google returns a captcha, so neither is
+  a fallback. Only use domains that show up in search results: guessing one from a seller name
   (e.g. `chairs.pk` from the Daraz seller "Chairs.PK") gives a domain that doesn't resolve.
 - **Temu** (`temu.com/pk-en`, prices in PKR, but ships from China, so it's an import): blocked.
   Search pages and `-s.html` listing pages have no products in the HTML, and `stealthy_fetch`
@@ -123,6 +126,7 @@ What it found for these stores (checked 2026-10-06):
 | dexx.pk | Hostinger AI Builder, products load with JavaScript | `stealthy_fetch` on `/shop` |
 | alfamall.com | Redirects to `/login` | Nothing: needs an account |
 | wellshop.pk | Amazon reseller (imports to order) | Excluded by rule 1 |
+| autobrandhouse.pk | Custom site behind a "Please wait while your request is being verified" page | `stealthy_fetch` on `/?s=<query>` with `wait=8000`, `network_idle=True` |
 | homefactree.com | HTTPS connection reset even in a real browser; HTTP returns 503 | Nothing: the site is down |
 
 ## How to research a purchase

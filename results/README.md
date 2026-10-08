@@ -10,3 +10,4 @@ One file per shopping chat session, not one per scrape. Each file is named
 |---|---|---|---|
 | 2026-10-05 | Metal frameless case for Galaxy S22 Ultra | Dropped | [2026-10-05-s22-ultra-metal-frameless-case.md](2026-10-05-s22-ultra-metal-frameless-case.md) |
 | 2026-10-06 | Ergonomic office chair | In progress | [2026-10-06-ergonomic-office-chair.md](2026-10-06-ergonomic-office-chair.md) |
+| 2026-10-08 | Side steps for Chery Tiggo 9 PHEV | In progress | [2026-10-08-tiggo-9-phev-side-steps.md](2026-10-08-tiggo-9-phev-side-steps.md) |
