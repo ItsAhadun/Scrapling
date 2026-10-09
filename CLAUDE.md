@@ -22,12 +22,26 @@ This repo is a workspace for researching products to buy. Use the `scrapling` MC
 
 ## Which Scrapling tool to use
 
-- `fetch` / `make_request`: fast HTTP fetch. Try this first for most stores and review sites.
-- `stealthy_fetch`: real browser with anti-bot handling. Use it when a site blocks the plain
-  fetch or returns a captcha or empty page (big marketplaces like Daraz may need this).
-- `bulk_fetch` / `bulk_get`: compare several product pages in one call.
-- Pass a CSS selector to pull out only the parts you need (title, price, rating, specs) so
-  responses stay small.
+Go down this list and stop at the first step that returns the products. Don't skip to a browser
+when a JSON API exists, because the API is faster, cheaper and more complete.
+
+1. **Known store API, wide sweep** (many listings, many stores): `tools/catalog.py`. It uses
+   Scrapling's Python `Fetcher` against Shopify, WooCommerce, Webx, Hostinger and Daraz JSON.
+2. **One page or a few pages:** `make_request` (plain HTTP, the default) or `bulk_get` for
+   several URLs. Pass `css_selector` so responses stay small.
+3. **Page loads its products with JavaScript, or the HTML has no results:** `fetch` /
+   `bulk_fetch`. This is a headless Chromium driven by Playwright, so it renders the page.
+4. **Blocked, a challenge page, or an empty page even in step 3:** `stealthy_fetch` /
+   `bulk_stealthy_fetch`. This is a hardened browser with anti-bot handling.
+5. **Still nothing, but the page shows products:** they come from a hidden JSON request. Find it
+   (API Anything's `capture <url> --outline`, or the browser's Network tab), then call it with
+   `make_request` and add it to `tools/catalog.py` if the platform is shared by other stores.
+6. **Captcha (reCAPTCHA, Turnstile) or login wall:** stop. Don't bypass it. Tell the user the
+   site can't be read and use other stores.
+
+For several requests to one site, `open_session` + `session_fetch` (browser) or
+`open_request_session` + `session_make_request` (plain HTTP) is faster. Always `close_session`.
+Pass a CSS selector to pull out only the parts you need (title, price, rating, specs).
 
 ### Site access from cloud sessions (last checked 2026-10-05)
 
