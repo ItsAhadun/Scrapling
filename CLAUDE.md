@@ -101,7 +101,9 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
   `/?s=<query>&post_type=product`.
   Bing's `count=30` parameter returns an empty page, so page through results with `&first=11`
   instead. After about 4 quick searches Bing starts redirecting to `&rdr=1&rdrig=...` and returns
-  an empty page (checked 2026-10-08), so make every search count. When that happens,
+  an empty page or unrelated junk (checked 2026-10-08), so make every search count. Waiting a
+  few hours resets it; spacing searches 90 s apart (a background script with `StealthyFetcher`)
+  gets about 5 more good results before the junk returns (checked 2026-10-09). When that happens,
   `html.duckduckgo.com` returns 202 with no results and Google returns a captcha, so neither is
   a fallback. Only use domains that show up in search results: guessing one from a seller name
   (e.g. `chairs.pk` from the Daraz seller "Chairs.PK") gives a domain that doesn't resolve.
@@ -139,6 +141,7 @@ What it found for these stores (checked 2026-10-06):
 | alfamall.com | Redirects to `/login` | Nothing: needs an account |
 | wellshop.pk | Amazon reseller (imports to order) | Excluded by rule 1 |
 | autobrandhouse.pk | Custom site behind a "Please wait while your request is being verified" page | `stealthy_fetch` on `/?s=<query>` with `wait=8000`, `network_idle=True` |
+| autoaxis.pk | Custom marketplace behind Cloudflare | `stealthy_fetch` on `/search?keyword=<query>` (category pages like `/running-boards` load but list nothing) |
 | homefactree.com | HTTPS connection reset even in a real browser; HTTP returns 503 | Nothing: the site is down |
 
 ## How to research a purchase
