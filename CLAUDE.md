@@ -104,6 +104,16 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
 - **iShopping, Czone, allmytech.pk:** plain `make_request` returns 200, no Cloudflare challenge.
   `stealthy_fetch` with `solve_cloudflare=True` also works (logs "No Cloudflare challenge
   found"), so it isn't needed here but does no harm.
+  iShopping's search page (`/catalogsearch/result/?q=`) returns no products even in a browser (the
+  results load by JavaScript); read category pages instead, e.g. `/computers/accessories/monitors`
+  (`li.item .product-item-info`, `.product-item-link`, `[data-price-type="finalPrice"] .price`).
+  Czone moved to Webx (old `.aspx` category and search URLs return 404), so `tools/catalog.py` reads
+  it (checked 2026-10-09).
+- **Mega.pk:** no search URL found; read brand pages like `https://www.mega.pk/lcdledmonitor-dell/`
+  (`.lap_thu_box` cards: `#lap_name_div a`, `.cat_price`, a `.detailer` spec list). Their
+  "No Type C Port" flag is missing from many cards, so don't treat a missing flag as USB-C.
+- **Shophive** (Magento): `/catalogsearch/result/?q=<query>` returns at most 16 items per query,
+  so run several narrow queries.
 - **TeleX:** `telemart.pk` redirects to `www.telex.pk` and works with the default
   `follow_redirects="safe"` (there's no 127.0.0.1 proxy locally, so `True` isn't needed).
 - **OLX:** `covers-cases_c1471/q-<words>` returns 200 with results.
@@ -129,7 +139,7 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
 
 To sweep many stores at once (hundreds or thousands of listings), use `tools/catalog.py`
 instead of writing a new script. It reads Shopify stores (`/products.json`, up to 2,500 products),
-WooCommerce stores (Store API `/wp-json/wc/store/v1/products?search=`), Webx stores (homecart.pk, xtra.pk),
+WooCommerce stores (Store API `/wp-json/wc/store/v1/products?search=`), Webx stores (homecart.pk, xtra.pk, galaxy.pk, czone.com.pk),
 Hostinger AI Builder stores (dexx.pk), plus Daraz search
 JSON, and writes one JSON file (title, price, stock, url, description, image, and rating where
 the store has one):
@@ -156,7 +166,7 @@ What it found for these stores (checked 2026-10-06; Webx/Hostinger rows rechecke
 | Store | Why the API fails | What works |
 |---|---|---|
 | fokusoffice.com | Custom site, no product API | Category pages (`/shop/office-chairs`) and `/shop?search=<q>` with `make_request`. `api-anything capture` confirms the HTML is the only source (2026-10-09) |
-| homecart.pk, xtra.pk | Webx Ecommerce (Nuxt): no Shopify/Woo API, search is rendered by JavaScript | **`tools/catalog.py` reads them** (`webx`): the home page embeds an anonymous ~15 min JWT, `POST https://frontapi.mywebx.pk/api/ProductListing/GetProductListingV2` with `{keyword, categoryID, startRow, results, priceRange, sortBy, ...}` and headers `authorization: Bearer <jwt>`, `origin`, `referer` returns price, list price, stock, rating. Works for any Webx store (checked 2026-10-09) |
+| homecart.pk, xtra.pk, galaxy.pk, czone.com.pk | Webx Ecommerce (Nuxt): no Shopify/Woo API, search is rendered by JavaScript | **`tools/catalog.py` reads them** (`webx`): the home page embeds an anonymous ~15 min JWT, `POST https://frontapi.mywebx.pk/api/ProductListing/GetProductListingV2` with `{keyword, categoryID, startRow, results, priceRange, sortBy, ...}` and headers `authorization: Bearer <jwt>`, `origin`, `referer` returns price, list price, stock, rating. Works for any Webx store (checked 2026-10-09) |
 | zahcomputers.pk | WordPress, but Cloudflare returns 403 on `/wp-json/` | `/?s=<query>` HTML (a loose search that also returns unrelated deals) and `/category/<slug>`. `api-anything capture` of `/?s=ssd` found only cart calls and no product API (2026-10-09) |
 | dexx.pk | Hostinger AI Builder, products load with JavaScript | **`tools/catalog.py` reads it** (`hostinger`): the page HTML holds a `scha_...` id, and `GET https://api-ecommerce.hostinger.com/store/<scha_id>/products?offset=0&limit=100&q=<query>` (with `origin`/`referer` headers) returns title, slug, variants with prices (`amount` / 100 = PKR). Product URL is `https://dexx.pk/<slug>`. Only a chair shop with 26 products (checked 2026-10-09) |
 | alfamall.com | Redirects to `/login` | Nothing: needs an account |

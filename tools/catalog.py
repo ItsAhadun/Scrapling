@@ -6,7 +6,7 @@ Usage (from the repo root):
     python tools/catalog.py --selftest
 
 Reads Shopify stores via /products.json, WooCommerce stores via the Store API
-(/wp-json/wc/store/v1/products), Webx Ecommerce stores (xtra.pk, homecart.pk) and Hostinger AI Builder
+(/wp-json/wc/store/v1/products), Webx Ecommerce stores (xtra.pk, homecart.pk, galaxy.pk, czone.com.pk) and Hostinger AI Builder
 stores (dexx.pk) via their JSON APIs. When a store is neither, it prints a diagnosis
 (platform, login wall, foreign currency, DNS/TLS failure, ...) so you know which
 Scrapling tool to use on it instead. See CLAUDE.md "Reading store catalogues".
@@ -71,7 +71,7 @@ def woo(store, kw):
     return rows
 
 def webx(store, kw):
-    """Webx Ecommerce stores (xtra.pk, homecart.pk): the page embeds a ~15 min anonymous JWT for frontapi.mywebx.pk."""
+    """Webx Ecommerce stores (xtra.pk, homecart.pk, galaxy.pk, czone.com.pk): the page embeds a ~15 min anonymous JWT for frontapi.mywebx.pk."""
     home = f"https://{store}"
     try:
         tok = re.search(r"eyJ[\w-]+\.eyJ[\w-]+\.[\w-]+", body(get(home + "/")))
