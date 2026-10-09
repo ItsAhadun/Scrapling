@@ -35,6 +35,19 @@ Czone, Galaxy, eezepc, rbtechngames, Techarc, Mustafa Computers, Shophive, iShop
 | Lenovo L27qe | Czone / Galaxy / Mustafa / Techarc | 49,000 | 1440p IPS 100Hz, 99% sRGB | https://www.czone.com.pk/lenovo-l27qe-27-qhd-ips-100hz-monitor |
 | Philips 27E1N1800A | Czone / Mustafa / TeleX | 59,000 / 58,900 / 63,999 | 4K IPS, speakers | https://mustafacomputers.pk/products/philips-27e1n1800a-27-4k-uhd-ips-monitor-3840-2160-hdr10-adaptive-sync-speakers |
 
+### Xiaomi (user asked for more Xiaomi options)
+
+Only five 27" Xiaomi models are sold new in Pakistan (rbtechngames, eezepc, Shophive). Daraz has no
+Pakistan-based seller listing a Xiaomi monitor, and Czone, Galaxy, Techarc, Mustafa, TeleX, iShopping and Mega have none.
+
+| Product | Store | Price (PKR) | Key specs | Link |
+|---|---|---|---|---|
+| Xiaomi A27Ui | rbtechngames (in stock) / eezepc (out of stock) | 79,999 / 83,990 | 4K IPS, **USB-C 90W**, 95% DCI-P3, ΔE<1 claimed, height/pivot stand | https://rbtechngames.com/shop-2/computers/monitors/xiaomi-a27ui-27-4k-3840x2160-uhd-60hz-6ms-ips-gaming-monitor/ |
+| Xiaomi A27Qi 2026 | rbtechngames | 52,999 | 1440p IPS 120Hz, 95% DCI-P3, ΔE<2, 250 nits, tilt only, no USB-C | https://rbtechngames.com/shop-2/computers/monitors/xiaomi-a27qi-2026-27-2k-2560x1440-qhd-120hz-6ms-ips-gaming-monitor/ |
+| Xiaomi G27Qi (2025) | eezepc (out of stock) | 55,490 | 1440p Fast IPS 180Hz, gaming, no USB-C | https://eezepc.com/product/xiaomi-2k-gaming-monitor-g27qi/ |
+| Xiaomi G27Qi 2026 | rbtechngames / eezepc (out of stock) | 59,499 / 61,990 | 1440p Fast IPS 200Hz, gaming, no USB-C | https://rbtechngames.com/shop-2/computers/monitors/xiaomi-g27qi-2026-27-2k-2560x1440-qhd-200hz-1ms-fast-ips-gaming-monitor/ |
+| Xiaomi G27i (2026) | Shophive / eezepc (out of stock) | 52,499 / 39,990 | **1080p** 165Hz gaming, no USB-C | https://www.shophive.com/catalogsearch/result/?q=xiaomi+monitor |
+
 Not recommended: Philips 27E1N1300A (USB-C 65W, but 1080p: soft text on macOS), PKR 48,900–49,990.
 
 ### Excluded (used / renewed), for the record
@@ -49,6 +62,11 @@ Dell P2725DE 52,999, Lenovo P27h-20 40,000 "Renewed" (Daraz).
 - **Best colours, in budget-ish:** MSI PRO MP273U, PKR 60,800 at Czone. Known brand, 98% DCI-P3,
   but needs a USB-C→DP cable and separate charging.
 - **Stretch:** MXG P27IU-4K, PKR 68,400 at Techarc (4K + USB-C 65W).
+- **Xiaomi:** A27Ui (PKR 79,999, rbtechngames) is the best match overall (4K, USB-C 90W, calibrated
+  colours) but ~20k over budget. In budget, Xiaomi A27Qi 2026 (52,999), with good colours but no USB-C.
+
+Scanned: 2,477 unique listings from store/Daraz JSON sweeps (1,292 monitors, 535 of them 27"),
+plus ~230 from HTML pages (iShopping 81, Shophive ~100, Mega brand pages, OLX ~45).
 
 ## Outcome
 

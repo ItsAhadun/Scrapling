@@ -184,6 +184,8 @@ What it found for these stores (checked 2026-10-06; Webx/Hostinger rows rechecke
    (official stores, Daraz Mall, well-rated sellers).
 4. Always give a direct link to every product listing you recommend.
 5. Say when you fetched each price, and point out anything you couldn't verify.
+   End every research reply with how many options you looked through (unique listings scanned,
+   and how many matched the basic criteria). The user asked for this on every reply.
 6. Log the session in `results/` (see below).
 
 ## Logging each session in `results/`
