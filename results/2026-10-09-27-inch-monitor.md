@@ -37,8 +37,12 @@ Czone, Galaxy, eezepc, rbtechngames, Techarc, Mustafa Computers, Shophive, iShop
 
 ### Xiaomi (user asked for more Xiaomi options)
 
-Only five 27" Xiaomi models are sold new in Pakistan (rbtechngames, eezepc, Shophive). Daraz has no
+Five 27" Xiaomi models are sold new in Pakistan at rbtechngames, eezepc and Shophive. Daraz has no
 Pakistan-based seller listing a Xiaomi monitor, and Czone, Galaxy, Techarc, Mustafa, TeleX, iShopping and Mega have none.
+**Correction (found later in the session):** the Xiaomi brand stores also sell them: mistore.pk (A27Ui 89,999 in stock;
+A27Qi 2026 59,999 out of stock; Mini LED G Pro 27Qi 2026 109,999 in stock), mishop.pk (A27Ui 79,799 and A27Qi 2026 53,299,
+both out of stock) and xiaomisale.com (A27Ui 84,999 and A27Qi 2026 59,999, both out of stock). xiaomistore.pk sits behind
+Cloudflare and couldn't be read.
 
 | Product | Store | Price (PKR) | Key specs | Link |
 |---|---|---|---|---|
@@ -67,6 +71,35 @@ Dell P2725DE 52,999, Lenovo P27h-20 40,000 "Renewed" (Daraz).
 
 Scanned: 2,477 unique listings from store/Daraz JSON sweeps (1,292 monitors, 535 of them 27"),
 plus ~230 from HTML pages (iShopping 81, Shophive ~100, Mega brand pages, OLX ~45).
+
+## Reviews (top 8, checked 2026-10-09)
+
+Pakistani stores have almost no reviews (one 5-star rating for the MSI MP273U at eezepc). Reddit threads were
+read with Scrapling (`/svc/shreddit/comments/r/<sub>/t3_<id>` returns the comments).
+
+- **MSI PRO MP273U:** positive. Owners measured ΔE avg 0.8 and 300 nits in sRGB mode after profiling (i1Display),
+  "colours look good, sharp, no dead pixels". Mac gotcha: it wouldn't wake from sleep on a Mac mini, fixed by
+  enabling HDMI CEC in the OSD. Tilt-only stand.
+- **Xiaomi A27Ui:** good factory sRGB (slight blue tint). **USB-C standby/wake bug** reported by several
+  owners, including one on a MacBook; one returned it. Some off-axis washout of whites up close.
+- **Xiaomi A27Qi 2026:** owners happy with sharpness and eye comfort; the ΔE<1/2 factory claim is doubted;
+  weak contrast for dark content. r/macbook: 1440p at 27" looks fuzzy on macOS, 4K recommended.
+- **EASE O27I4K6:** no reviews of this model anywhere. EASE brand threads (PakGamers): mixed, with QC issues
+  (dead pixels, backlight bleed), little online presence, and specs sometimes inflated. One G27I16 owner was happy.
+- **MXG P27IU-4K:** PakGamers: one Mac user chose it for 4K + USB-C, no follow-up review; one comment "MXG is
+  good but nah, go for Koorui". One resale ad (Karachi, bought for 75k).
+- **KOORUI N07:** owners say colours and value are good, with cheap build quality. It's an HKC sub-brand,
+  and panels may vary between batches. No speakers.
+- **Lenovo L27qe:** one owner on r/Monitors with no complaints, otherwise thin.
+- **Philips 27E1N1800A:** only deal posts, no owner reviews found.
+
+Review articles: MSI MP273U (clevelandcomputerguy, laptopdecision) agree: accurate colours, but a tilt-only
+stand and no USB hub. Xiaomi A27Qi (note.com in-depth, ngxptech): 100% sRGB / 95% P3, factory-calibrated,
+tilt-only stand (VESA 75 works with an arm). Bing searches for the A27Ui, Philips and KOORUI returned junk (throttled).
+
+**Ranking after reviews:** 1. MSI PRO MP273U, 2. Xiaomi A27Qi 2026, 3. EASE O27I4K6 (a gamble), 4. Xiaomi A27Ui
+(USB-C wake bug, over budget), 5. KOORUI N07, 6. MXG P27IU-4K, 7. Lenovo L27qe, 8. Philips 27E1N1800A.
+Scanned this round: 24 Reddit threads, 4 review articles, 56 Xiaomi brand-store listings.
 
 ## Outcome
 

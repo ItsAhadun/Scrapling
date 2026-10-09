@@ -117,6 +117,14 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
 - **TeleX:** `telemart.pk` redirects to `www.telex.pk` and works with the default
   `follow_redirects="safe"` (there's no 127.0.0.1 proxy locally, so `True` isn't needed).
 - **OLX:** `covers-cases_c1471/q-<words>` returns 200 with results.
+- **Reddit** (checked 2026-10-09): `search.json` and thread `.json` return 403. The HTML search
+  `https://www.reddit.com/search/?q=<query>` works (thread links are `a[href*="/comments/"]`).
+  The thread page has the post (`shreddit-post` `[slot="text-body"]`) but no comments. Comments come from
+  `https://www.reddit.com/svc/shreddit/comments/r/<sub>/t3_<id>`: each `shreddit-comment` has
+  `score`, `depth` and `thingid`, and its text is in `[id="<thingid>-comment-rtjson-content"]`.
+  In Git Bash, set `MSYS_NO_PATHCONV=1` before passing `/r/...` paths as arguments, or they get mangled.
+- **Brand stores:** Xiaomi's Pakistani stores mistore.pk and xiaomisale.com (Shopify) and mishop.pk
+  (WooCommerce) work with `tools/catalog.py`. xiaomistore.pk is behind Cloudflare and has no readable API.
 - **Finding smaller stores:** plain `make_request` to Bing or DuckDuckGo returns junk or a
   captcha. `stealthy_fetch` on `https://www.bing.com/search?q=<query>&cc=PK&setlang=en` works
   (read `li.b_algo`: `h2` title, `cite` domain). Pakistani phone-case stores are mostly Shopify,
