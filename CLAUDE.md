@@ -117,6 +117,10 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
 - **TeleX:** `telemart.pk` redirects to `www.telex.pk` and works with the default
   `follow_redirects="safe"` (there's no 127.0.0.1 proxy locally, so `True` isn't needed).
 - **OLX:** `covers-cases_c1471/q-<words>` returns 200 with results.
+- **PakWheels accessories store:** `stealthy_fetch` on
+  `https://www.pakwheels.com/accessories-spare-parts/search/-/?q=<query>` (add `&page=2`; read
+  `.search-title`). The `/search/-/vm_<make>/vmd_<model>/` filter URL ignores the model and shows
+  generic best-sellers (checked 2026-10-09).
 - **Reddit** (checked 2026-10-09): `search.json` and thread `.json` return 403. The HTML search
   `https://www.reddit.com/search/?q=<query>` works (thread links are `a[href*="/comments/"]`).
   The thread page has the post (`shreddit-post` `[slot="text-body"]`) but no comments. Comments come from
@@ -135,9 +139,16 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
   instead. After about 4 quick searches Bing starts redirecting to `&rdr=1&rdrig=...` and returns
   an empty page or unrelated junk (checked 2026-10-08), so make every search count. Waiting a
   few hours resets it; spacing searches 90 s apart (a background script with `StealthyFetcher`)
-  gets about 5 more good results before the junk returns (checked 2026-10-09). When that happens,
-  `html.duckduckgo.com` returns 202 with no results and Google returns a captcha, so neither is
-  a fallback. Only use domains that show up in search results: guessing one from a seller name
+  gets about 5 more good results before the junk returns (checked 2026-10-09).
+  Google returns a captcha and `html.duckduckgo.com` returned 202 with no results, but these
+  work as fallbacks (checked 2026-10-09), both via `StealthyFetcher`:
+  `https://search.yahoo.com/search?p=<query>&b=11` (read `#web ol li`; `b` pages by 10) and
+  `https://lite.duckduckgo.com/lite/?q=<query>&kl=pk-en` (read `a.result-link`, real URL in the
+  `uddg=` parameter). Each handled 20 searches spaced 30-40 s apart with no blocking. Brave Search
+  shows a captcha after about 3 searches, Mojeek returns 403 and Startpage returns an empty page.
+  If you run a search batch as a background script, give it a unique file name in `_work/`
+  (e.g. `<item>_bing.py`): other sessions write to `_work/` too and may overwrite a shared name.
+  Only use domains that show up in search results: guessing one from a seller name
   (e.g. `chairs.pk` from the Daraz seller "Chairs.PK") gives a domain that doesn't resolve.
 - **Temu** (`temu.com/pk-en`, prices in PKR, but ships from China, so it's an import): blocked.
   Search pages and `-s.html` listing pages have no products in the HTML, and `stealthy_fetch`
@@ -181,6 +192,7 @@ What it found for these stores (checked 2026-10-06; Webx/Hostinger rows rechecke
 | wellshop.pk | Amazon reseller (imports to order) | Excluded by rule 1 |
 | autobrandhouse.pk | Custom site behind a "Please wait while your request is being verified" page | `stealthy_fetch` on `/?s=<query>` with `wait=8000`, `network_idle=True`. Also tried `api-anything capture`: it hits a reCAPTCHA wall (checked 2026-10-09), so don't try to get around it |
 | autoaxis.pk | Custom marketplace behind Cloudflare | `stealthy_fetch` on `/search?keyword=<query>` (category pages like `/running-boards` load but list nothing) |
+| abmotors.pk | Cloudflare, then redirects to a cPanel default page | Nothing: the site is broken |
 | homefactree.com | HTTPS connection reset even in a real browser; HTTP returns 503 | Nothing: the site is down |
 
 ## How to research a purchase

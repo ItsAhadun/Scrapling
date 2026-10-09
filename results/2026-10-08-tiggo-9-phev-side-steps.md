@@ -31,8 +31,12 @@ Sarmad, so Rs 30,000 for the Tiggo 9 set is a normal price.
 Fixed: Autostore.pk's Tiggo 9 side steps, Rs 30,000. It's the only Tiggo 9-specific listing
 in Pakistan. Confirm fitment for the 2026 PHEV with Autostore on WhatsApp before ordering.
 
-Powered retractable: no Pakistani store lists one for the Tiggo 9. Autostore sells powered steps
-for other SUVs (Rs 150,000-210,000), so ask them whether they can source a Tiggo 9 set.
+Powered retractable: no Pakistani store lists one for the Tiggo 9. Pakistani shops fit powered
+steps on other SUVs for Rs 120,000-210,000 (Autostore, Sarmad, Elite Autos, Autojin, Auto 2000
+Sports), so ask them whether they can source a Tiggo 9 set. Chery also makes a genuine Tiggo 9
+electric side step, part number 08CT1X20T28PHRN001 (listed by a UK Chery parts dealer at GBP 844
+with a 4-6 week lead time; that's an import, so it's only useful as a part number to quote to a
+Pakistani Chery dealer).
 
 ## Outcome
 
@@ -47,8 +51,20 @@ for other SUVs (Rs 150,000-210,000), so ask them whether they can source a Tiggo
   powered steps. PakWheels accessories: nothing relevant. Chery dealer sites (cherypakistan.com,
   cheryravi.pk, cherysouth.com) have no online accessory catalogue, so ask a dealer directly about
   genuine Chery side steps.
+- Round 3 (2026-10-09), still nothing new for the Tiggo 9. Retried and new: PakWheels accessories
+  (proper search URL `/accessories-spare-parts/search/-/?q=<query>`; 52 Tiggo 9 items, no side
+  steps), AutoBrandHouse full running-boards category (12 items, Tiggo 8 only), Daraz broad
+  "tiggo 9" sweep (258 listings, 62 Tiggo 9 items, no steps), Mega Motor Sports (199 listings),
+  Auto 2000 Sports (62 side steps, none Tiggo 9; powered Prado FJ150 Rs 120,000), Autojin,
+  The Car Guys, NDE Store, MarvelX, MrParts (side skirts only), CarAdvisers (tiny parts section),
+  iShopping and TeleX (don't sell car side steps). abmotors.pk redirects to a hosting default page
+  (site broken). Search engines: 20 DuckDuckGo Lite + 20 Yahoo searches, 3 Brave, plus Bing.
+- Leads that need a login: Facebook groups "Chery Tiggo 7-8-9 PHEV family - pakistan (official)"
+  and "Tiggo Pakistan Family", where owners may know local installers.
+- Excluded as imports: evorevo4x4.com (South Africa, ZAR), autostarke.com (India), ramyautomotive.com
+  (UAE, AED), cx-skn.com, teslgo.com, glynhopkinpartsonline.co.uk (UK).
 - Excluded as imports: AliExpress, Alibaba, Amazon, eBay, decoinfabric.com (USD), drivestylish.com
   (India, INR).
-- Bing gave ~9 usable searches across both days before returning junk; Google captcha,
-  DuckDuckGo blocked. Facebook/Instagram-only sellers couldn't be searched.
+- Bing gave ~9 usable searches across the first two rounds before returning junk; Google
+  captcha. Facebook/Instagram-only sellers couldn't be searched.
 - Autostore's listing has no written specs or PHEV-specific fitment; confirm with the seller.
