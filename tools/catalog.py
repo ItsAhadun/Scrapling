@@ -5,8 +5,9 @@ Usage (from the repo root):
         --daraz "ergonomic chair" "mesh chair" --out _work/listings.json
     python tools/catalog.py --selftest
 
-Reads Shopify stores via /products.json and WooCommerce stores via the Store API
-(/wp-json/wc/store/v1/products). When a store is neither, it prints a diagnosis
+Reads Shopify stores via /products.json, WooCommerce stores via the Store API
+(/wp-json/wc/store/v1/products), Webx Ecommerce stores (xtra.pk, homecart.pk) and Hostinger AI Builder
+stores (dexx.pk) via their JSON APIs. When a store is neither, it prints a diagnosis
 (platform, login wall, foreign currency, DNS/TLS failure, ...) so you know which
 Scrapling tool to use on it instead. See CLAUDE.md "Reading store catalogues".
 """
@@ -68,6 +69,70 @@ def woo(store, kw):
             break
         time.sleep(1)
     return rows
+
+def webx(store, kw):
+    """Webx Ecommerce stores (xtra.pk, homecart.pk): the page embeds a ~15 min anonymous JWT for frontapi.mywebx.pk."""
+    home = f"https://{store}"
+    try:
+        tok = re.search(r"eyJ[\w-]+\.eyJ[\w-]+\.[\w-]+", body(get(home + "/")))
+    except Exception:
+        return None
+    if not tok:
+        return None
+    rows, start = [], 1
+    while True:
+        try:
+            d = json.loads(body(Fetcher_post("https://frontapi.mywebx.pk/api/ProductListing/GetProductListingV2",
+                                             {"keyword": kw or "", "categoryID": "0", "collectionID": "0", "brands": "", "variants": "",
+                                              "searchFields": "", "priceRange": "", "sortBy": "2", "startRow": str(start), "results": "100",
+                                              "stockStatus": ""},
+                                             {"authorization": "Bearer " + tok.group(0), "origin": home, "referer": home + "/"})))["data"]
+        except Exception:
+            return None if start == 1 else rows
+        for p in d["results"]:
+            pr, rt = p["productPrice"], p["productRating"]
+            rows.append(dict(src=store, title=p["productName"], price=float(pr["price"]), was=float(pr["listPrice"] or 0) or None,
+                             avail=p["productStock"].get("stockStatus") == "instock", url=home + p["productURL"],
+                             desc=strip(p.get("productDesc"))[:1500], img=p.get("imageFile", ""),
+                             rating=rt.get("rating") if rt.get("isRating") == "1" else None, reviews=rt.get("ratingCount")))
+        start += len(d["results"])
+        if not d["results"] or start > int(d["totalRecords"]):
+            return rows
+        time.sleep(1)
+
+def Fetcher_post(url, payload, headers):
+    from scrapling.fetchers import Fetcher
+    return Fetcher.post(url, json=payload, headers={"accept": "application/json", **headers}, timeout=30, retries=1)
+
+def hostinger(store, kw):
+    """Hostinger AI Builder stores (dexx.pk): products load from api-ecommerce.hostinger.com (id is in the page HTML)."""
+    home = f"https://{store}"
+    try:
+        sid = re.search(r"scha_[A-Z0-9]+", body(get(home + "/")))
+    except Exception:
+        return None
+    if not sid:
+        return None
+    rows, off = [], 0
+    while True:
+        try:
+            d = json.loads(body(get(f"https://api-ecommerce.hostinger.com/store/{sid.group(0)}/products",
+                                    params={"offset": off, "limit": 100, "q": kw or ""},
+                                    headers={"origin": home, "referer": home + "/"})))
+        except Exception:
+            return None if off == 0 else rows
+        for p in d["products"]:
+            v = p["variants"][0] if p.get("variants") else {}
+            pr = (v.get("prices") or [{}])[0]
+            if not pr.get("amount"):
+                continue
+            div = 10 ** int((pr.get("currency") or {}).get("decimal_digits", 2))
+            rows.append(dict(src=store, title=p["title"], price=pr["amount"] / div, avail=bool(p.get("is_available")),
+                             url=f"{home}/{p['slug']}", desc=strip(p.get("description"))[:1500], img=p.get("thumbnail", "")))
+        off += 100
+        if off >= d["count"]:
+            return rows
+        time.sleep(1)
 
 def daraz_search(q, page, flt):
     """One Daraz search page as JSON. Retries once on 502/odd responses. Returns (items, total_results)."""
@@ -204,9 +269,11 @@ def main():
         return
     rows = []
     for s in a.stores:
-        got, kind = shopify(s, a.keyword), "shopify"
-        if got is None:
-            got, kind = woo(s, a.keyword), "woocommerce"
+        got, kind = None, ""
+        for kind, fn in (("shopify", shopify), ("woocommerce", woo), ("webx", webx), ("hostinger", hostinger)):
+            got = fn(s, a.keyword)
+            if got is not None:
+                break
         if got is None:
             print(f"{s}: not readable via API -> " + "; ".join(diagnose(s)), flush=True)
             continue

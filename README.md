@@ -62,7 +62,7 @@ Just ask, for example:
 > Find me the best noise-cancelling headphones under Rs 30,000 and compare prices on Daraz,
 > PriceOye and TeleX.
 
-For wide sweeps, `tools/catalog.py` collects listings from many Shopify/WooCommerce stores and
+For wide sweeps, `tools/catalog.py` collects listings from many Shopify, WooCommerce, Webx and Hostinger stores and
 Daraz into one JSON file and explains why any other store can't be read (see `CLAUDE.md`).
 
 Each shopping chat gets one summary file in `results/` (what you wanted, options compared

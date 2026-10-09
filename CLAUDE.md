@@ -114,8 +114,9 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
 ### Reading store catalogues in bulk (`tools/catalog.py`)
 
 To sweep many stores at once (hundreds or thousands of listings), use `tools/catalog.py`
-instead of writing a new script. It reads Shopify stores (`/products.json`, up to 2,500 products)
-and WooCommerce stores (Store API `/wp-json/wc/store/v1/products?search=`), plus Daraz search
+instead of writing a new script. It reads Shopify stores (`/products.json`, up to 2,500 products),
+WooCommerce stores (Store API `/wp-json/wc/store/v1/products?search=`), Webx stores (homecart.pk, xtra.pk),
+Hostinger AI Builder stores (dexx.pk), plus Daraz search
 JSON, and writes one JSON file (title, price, stock, url, description, image, and rating where
 the store has one):
 
@@ -129,18 +130,24 @@ python tools/catalog.py --keyword chair --stores offisits.com.pk lunarfurniture.
 (store-side budget, keywords in `title`/`desc`). Use `python tools/catalog.py --selftest`
 to check the diagnosis logic.
 
-For stores that aren't Shopify or WooCommerce, it prints a diagnosis and what to use instead.
-What it found for these stores (checked 2026-10-06):
+To find a hidden JSON API on a JavaScript-rendered store, use [API Anything](https://github.com/goodnight000/api-anything)
+(`capture <url> --outline` lists the page's network calls and shows what each returns). It isn't installed
+globally. It was cloned and built in a scratch folder, with `channel: "chrome"` changed to `"msedge"` in
+`src/browser.ts` because this PC has Edge but no Chrome. Once you've found the request, call it with Scrapling
+(as `webx()` and `hostinger()` do) and don't keep the Node tool in the loop. Don't use its `login` or cookie import.
+
+For stores it can't read, it prints a diagnosis and what to use instead.
+What it found for these stores (checked 2026-10-06; Webx/Hostinger rows rechecked 2026-10-09):
 
 | Store | Why the API fails | What works |
 |---|---|---|
-| fokusoffice.com | Custom site, no product API | Category pages (`/shop/office-chairs`) and `/shop?search=<q>` with `make_request` |
-| homecart.pk, xtra.pk | Webx Ecommerce (Nuxt) | `make_request` on category pages (e.g. xtra `/gaming-chairs-pakistan`) and product pages. homecart's `/search?q=` works, but xtra's search page has no results in the HTML |
-| zahcomputers.pk | WordPress, but Cloudflare returns 403 on `/wp-json/` | `/?s=<query>` HTML (a loose search that also returns unrelated deals) and `/category/<slug>` |
-| dexx.pk | Hostinger AI Builder, products load with JavaScript | `stealthy_fetch` on `/shop` |
+| fokusoffice.com | Custom site, no product API | Category pages (`/shop/office-chairs`) and `/shop?search=<q>` with `make_request`. `api-anything capture` confirms the HTML is the only source (2026-10-09) |
+| homecart.pk, xtra.pk | Webx Ecommerce (Nuxt): no Shopify/Woo API, search is rendered by JavaScript | **`tools/catalog.py` reads them** (`webx`): the home page embeds an anonymous ~15 min JWT, `POST https://frontapi.mywebx.pk/api/ProductListing/GetProductListingV2` with `{keyword, categoryID, startRow, results, priceRange, sortBy, ...}` and headers `authorization: Bearer <jwt>`, `origin`, `referer` returns price, list price, stock, rating. Works for any Webx store (checked 2026-10-09) |
+| zahcomputers.pk | WordPress, but Cloudflare returns 403 on `/wp-json/` | `/?s=<query>` HTML (a loose search that also returns unrelated deals) and `/category/<slug>`. `api-anything capture` of `/?s=ssd` found only cart calls and no product API (2026-10-09) |
+| dexx.pk | Hostinger AI Builder, products load with JavaScript | **`tools/catalog.py` reads it** (`hostinger`): the page HTML holds a `scha_...` id, and `GET https://api-ecommerce.hostinger.com/store/<scha_id>/products?offset=0&limit=100&q=<query>` (with `origin`/`referer` headers) returns title, slug, variants with prices (`amount` / 100 = PKR). Product URL is `https://dexx.pk/<slug>`. Only a chair shop with 26 products (checked 2026-10-09) |
 | alfamall.com | Redirects to `/login` | Nothing: needs an account |
 | wellshop.pk | Amazon reseller (imports to order) | Excluded by rule 1 |
-| autobrandhouse.pk | Custom site behind a "Please wait while your request is being verified" page | `stealthy_fetch` on `/?s=<query>` with `wait=8000`, `network_idle=True` |
+| autobrandhouse.pk | Custom site behind a "Please wait while your request is being verified" page | `stealthy_fetch` on `/?s=<query>` with `wait=8000`, `network_idle=True`. Also tried `api-anything capture`: it hits a reCAPTCHA wall (checked 2026-10-09), so don't try to get around it |
 | autoaxis.pk | Custom marketplace behind Cloudflare | `stealthy_fetch` on `/search?keyword=<query>` (category pages like `/running-boards` load but list nothing) |
 | homefactree.com | HTTPS connection reset even in a real browser; HTTP returns 503 | Nothing: the site is down |
 
