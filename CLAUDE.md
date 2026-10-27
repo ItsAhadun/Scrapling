@@ -121,6 +121,12 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
   `https://www.pakwheels.com/accessories-spare-parts/search/-/?q=<query>` (add `&page=2`; read
   `.search-title`). The `/search/-/vm_<make>/vmd_<model>/` filter URL ignores the model and shows
   generic best-sellers (checked 2026-10-09).
+- **Electronic components** (checked 2026-10-27): Daraz, OLX and ~25 Pakistani electronics/industrial
+  stores have no genuine Cherry DB, Marquardt 1045 or Omron SS switches; only generic KW/V-15 clones.
+  Genuine parts are import-only. Mouser, element14/Farnell/Newark and TME return 403/Cloudflare to
+  Scrapling (prices via `https://octopart.com/search?q=<part>`); `export.rsdelivers.com` and eBay
+  read fine. Omron `SS-5GL`/`SS-01GL` are hinge levers: the pin plunger codes are `SS-5`/`SS-01`.
+  makerselectronics.com is behind Cloudflare, tronics.pk returns 402.
 - **Reddit** (checked 2026-10-09): `search.json` and thread `.json` return 403. The HTML search
   `https://www.reddit.com/search/?q=<query>` works (thread links are `a[href*="/comments/"]`).
   The thread page has the post (`shreddit-post` `[slot="text-body"]`) but no comments. Comments come from
