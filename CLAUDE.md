@@ -132,6 +132,10 @@ From the user's home connection (Windows, local MCP override, see `README.md`):
   The thread page has the post (`shreddit-post` `[slot="text-body"]`) but no comments. Comments come from
   `https://www.reddit.com/svc/shreddit/comments/r/<sub>/t3_<id>`: each `shreddit-comment` has
   `score`, `depth` and `thingid`, and its text is in `[id="<thingid>-comment-rtjson-content"]`.
+  That endpoint returns only the first few comments for the default sort. Fetch it with `?sort=top|new|old|controversial` (25 each),
+  then POST each `faceplate-partial.more-comments-partial` `src` (same host) with form field `cursor` (its hidden input) to get the
+  rest, repeating until none are left (checked 2026-10-28: 82 of a thread's 258 counted comments came back, the rest were deleted).
+  Script: `_work/reddit_chinalife_all.py` (gitignored; recreate from this description).
   In Git Bash, set `MSYS_NO_PATHCONV=1` before passing `/r/...` paths as arguments, or they get mangled.
 - **Brand stores:** Xiaomi's Pakistani stores mistore.pk and xiaomisale.com (Shopify) and mishop.pk
   (WooCommerce) work with `tools/catalog.py`. xiaomistore.pk is behind Cloudflare and has no readable API.

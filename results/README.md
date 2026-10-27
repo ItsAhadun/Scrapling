@@ -13,3 +13,4 @@ One file per shopping chat session, not one per scrape. Each file is named
 | 2026-10-08 | Side steps for Chery Tiggo 9 PHEV | In progress | [2026-10-08-tiggo-9-phev-side-steps.md](2026-10-08-tiggo-9-phev-side-steps.md) |
 | 2026-10-09 | 27-inch monitor for MacBook Air | In progress | [2026-10-09-27-inch-monitor.md](2026-10-09-27-inch-monitor.md) |
 | 2026-10-27 | Microswitches for LPKF ProtoMat S103 (Cherry DB / Marquardt 1045) | In progress | [2026-10-27-lpkf-microswitches.md](2026-10-27-lpkf-microswitches.md) |
+| 2026-10-28 | What to buy in China (Reddit r/chinalife thread) | In progress | [2026-10-28-china-trip-what-to-buy.md](2026-10-28-china-trip-what-to-buy.md) |
