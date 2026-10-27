@@ -12,27 +12,46 @@ home country customs) are still open.
 
 ## Options compared
 
-Prices are not checked yet. Reddit gave categories only. Comments are from r/chinalife, Aug 2026 (OP is a Canadian tourist).
+Source: 23 r/chinalife, r/travelchina, r/chinatravel, r/shenzhen, r/AskAChinese, r/IndiaTech, r/UsbCHardware, r/anker, r/dji,
+r/iems and r/pakistan threads (about 590 comments read; Reddit hid the rest). Prices are what commenters said, not checked.
+OP/commenters are mostly from US/Canada/EU, so "cheaper" is vs their home. Needs a Pakistani price check before buying.
 
-| Item | What commenters said | Votes / mentions | Caveat |
-|---|---|---|---|
-| Uniqlo | ~1/3 to 1/2 cheaper than France/UK/Canada; tax refund for tourists | top comment, 141 | Sizing runs small ("Asian fit"); long arms don't fit; one commenter says same as Canada before tax; still dearer than Japan |
-| Power banks, chargers | Cheap, good | 107 | |
-| Tailored suits and shirts | Very cheap vs the West, repeated by 5+ people | 107, 31 | Vietnam/HK also cheap |
-| Eyeglasses | ~$40 vs $200-400 in the US | 65 | |
-| JD.com app small gadgets | Electric candle lighters, odd innovative products | 38 | |
-| Chinese-brand electronics (Xiaomi, Huawei, Oppo, DJI, Xgimi projectors, u-smile toothbrush) | 30-40% cheaper at official stores; u-smile 1/3 of UK price; Xgimi 1/3 of Western price | 31, 20, 10 | Western brands (Nintendo, Apple) are not cheaper; China-version ROMs, region lock, no Google Play; China-only warranty; Aliexpress is similar if you can wait |
-| Label printers / journalling stuff | Xiaomi, NIIMBOT + refills; stationery 10c-5 EUR | 14 | |
-| Tea and tea sets | Good and cheap, more so on Taobao | 14, 1 | |
-| Snacks, luosifen, hotpot base | Pre-packed luosifen 6 GBP in UK vs 10-15 RMB; hotpot base (OP was in Chongqing) | 1 each | |
-| Shoes | Feiyue, Onitsuka Tiger, 10-20 RMB croc-style slippers on Taobao | 1-6 | |
-| Chinese clothing brands | Red Tornado, Sauce Zhan (denim), Bosideng (down) | 4, 1 | |
-| Cameras, lenses, DJI, K&F, Neewer, Ulanzi | Cheaper | 6 | |
-| Figurines, Pop Mart, anime merch, Pokemon cards, Takara Tomy | Cheaper / China-only | 1 each | |
-| Bike parts (CNC aluminium) | Cheap | 1 | |
-| Hanfu, LPs, fabric | Mentioned | 1 | |
-| Fake designer bags/watches | Mentioned twice | 0-1 | Counterfeits: customs seizure risk, not recommending |
-| Apps | Taobao, JD, Pinduoduo, Xianyu, Meituan | | Xianyu: some payments Alipay-only, scam risk |
+**Good value (several people agree)**
+
+| Item | Commenter price / saving | Caveat |
+|---|---|---|
+| Power bank, CCC-marked | 24,000 mAh 140 W: $35 in China vs $90 California; Miniso 10,000 mAh; Anker 25K Prime China version (JD official store) | Non-CCC power banks are seized at Chinese airport security; carry-on only |
+| Uniqlo | ~20% cheaper than EU on most, ~40% on linen; others say 1/3 to 1/2 | Still dearer than Japan/HK; runs small; Uniqlo and DJI often don't give tax refund |
+| Prescription glasses | ~$40 vs $200-400 US; thinner lenses, measured on the spot | One expat's frames fell apart twice |
+| Tailored suit/shirts | ~25% of Western price, 24 h delivery | Vietnam/HK also cheap |
+| Xiaomi 20" suitcase | 315 RMB on Taobao; 90go 254 RMB; Bulaimei, Dipingxian brands | Buy on Taobao, deliver to hotel, for the extra luggage |
+| Down jacket (real) | 300 RMB on Taobao; local-brand jackets $20-30; Anta, 361, Li-Ning | Order a size up; 50 RMB "puffers" are fakes |
+| Leather / cashmere / wool via Taobao | Lambswool-lined leather coat under $100; cashmere sweater ~$10 (one commenter) | Needs Alipay/WeChat; check reviews; sizes run small |
+| Mechanical keyboard / mouse | Mchose V2 Ultra 40 EUR vs 70 EUR Amazon DE; ROG mousepad 35 vs 60 EUR; Aula F75 30 EUR; NuPhy; Gravity Planet V60 | Layouts are US/ANSI or Chinese |
+| Running shoes | Li-Ning Red Hare 9 Ultra ~800 RMB; Pane trainers half the in-store vs web price | |
+| Adult RC off-road car | $30 vs $130 | |
+| Hair dryer clone | Dyson clone 100 RMB (Huaqiangbei); Flyco clippers $14 | US commenter couldn't use 220 V at home; Pakistan is ~230 V (not checked) |
+| Midea / Supor appliances | Midea Dyson-style vacuum ~1/5 price; air fryers cheap | Bulky; plug type |
+| Huawei Band 11 Pro | 400 RMB | Needs a HK account for all features |
+| Tea, teaware, flasks | Tea wholesale malls in every city, taste first; titanium flasks | |
+| Gifts/snacks | Osmanthus syrup, bing sha hand cream, hotpot base, dried dates/mushrooms, white rabbit candy, latiao, luosifen | No meat products |
+| Pop Mart, Jellycat, China-only Adidas | Slightly cheaper | |
+| Ebook reader (ink screen) | 500-1,500 RMB | |
+
+**Mixed / verify**
+
+- DJI: one commenter says Mini 4 Pro $660 in China vs $1,045 California; ex-DJI employee says prices are the same worldwide and sales abroad are often better;
+  a UK buyer saw no difference in Shenzhen. Osmo Pocket 3 Creator Combo "saved a couple hundred". Must activate in China; tax refund needs an unopened box.
+- Huawei flagship stores: same price as Europe (Freebuds Pro 5 1,499 yuan vs 169 EUR).
+- Tax refund: 13% VAT goods net 11%, 9% goods net 8% (2% fee); shop must show the 退税 sign; box stays sealed; Shenzhen airport counters are messy.
+
+**Avoid**
+
+- Phones: China iPhones lack eSIM, FaceTime/AI limits; China Androids lack Play Store (Huawei needs Gspace); savings 15-20% "not worth it".
+  Tablets and laptops are fine. Oppo Pad Mini is China-only.
+- Huaqiangbei/SEG for finished goods: tourist-trap prices, scams reported; window shop, buy the same item on JD (10-60% off, delivered in 2-4 h) or Taobao.
+- Counterfeit designer goods: customs risk, quality varies.
+- Pakistan returns: a r/pakistan thread has customs charging huge duty on shoes and bags from China. Baggage allowance not checked.
 
 ## Recommendation
 
