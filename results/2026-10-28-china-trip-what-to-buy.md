@@ -53,9 +53,23 @@ OP/commenters are mostly from US/Canada/EU, so "cheaper" is vs their home. Needs
 - Counterfeit designer goods: customs risk, quality varies.
 - Pakistan returns: a r/pakistan thread has customs charging huge duty on shoes and bags from China. Baggage allowance not checked.
 
+## Worth getting: verified against Pakistani prices (2026-10-28)
+
+Pakistani prices fetched from Daraz (local sellers) on 2026-10-28. China prices are Reddit claims: JD and Taobao need a login and
+DJI China pages show no prices, so Scrapling could not read them. Rates: 1 CNY = 41.5 PKR, 1 EUR = 308.6 PKR, 1 USD = 277.4 PKR.
+
+| Item | China (Reddit claim) | Pakistan today | Gap | Verdict |
+|---|---|---|---|---|
+| 24,000 mAh 140 W laptop power bank (CCC mark) | ~$35 = ~9,700 PKR (Anker version: roughly $90 in the US) | Anker 24,000 mAh 140 W: 43,500 PKR ([listing](https://www.daraz.pk/products/anker-power-bank-24000mah-3-port-portable-charger-with-140w-output-i467041698.html), 1 review, 5.0). Other Pakistani power banks are cheap no-name 20-30 W | ~30,000 PKR, about 4x | **Best pick.** Buy a named brand (Anker, Xiaomi, Cuktech, Baseus) in a store, carry-on only |
+| Aula F75 / F75 Pro keyboard | ~30 EUR = ~9,300 PKR | 14,800-19,000 PKR ([F75 Pro 14,800](https://www.daraz.pk/products/aula-f75-pro-75-i947407995.html)) | 5,500-9,700 PKR, 37-50% | Good: small, light. Layout is ANSI/Chinese |
+| Huawei Band 11 Pro | 400 RMB = ~16,600 PKR | 21,999-28,999 PKR (Band 11: 15,999-17,999) | 5,400-12,400 PKR, 25-43% | Fine, but needs a HK account for all features |
+| DJI Osmo Pocket 3 / Action 5 Pro | not verified | DJI PAKISTAN on Daraz: Pocket 3 131,999; Creator Combo 169,999; Action 5 Pro 123,999 PKR | none found | **Skip.** Pakistani official price is already near global; Reddit is split on China savings |
+| Xiaomi 20" suitcase | 315 RMB = ~13,100 PKR | no genuine Xiaomi on Daraz; other cabin cases 12,999 PKR | ~0 | Only buy as extra luggage |
+
 ## Recommendation
 
-Not yet. Needs the user's answers first.
+1. A 100-140 W CCC-marked power bank from a store (biggest gap). 2. Aula F75 keyboard. 3. Huawei Band 11 Pro if a HK account is OK. Skip DJI and phones.
+Still open: user budget, dates, Alipay/WeChat setup.
 
 ## Outcome
 
